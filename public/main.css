@@ -1,0 +1,22 @@
+.chatMessage {
+    overflow-Y: scroll;
+    overflow-Wrap: break-word;
+    height: 75vh
+}
+
+.chatForm {
+    z-index: 2;
+    position: fixed;
+    top: 20vh;
+    left: 70vw;
+    background-Color: white;
+    height: 80vh;
+    width: 30vw;
+}
+
+.toggleChat {
+    z-index: 2;
+    position: fixed;
+    top: 95vh;
+    left: 95vw;
+}

@@ -1,0 +1,47 @@
+[debug] [2017-11-16T20:12:20.159Z] ----------------------------------------------------------------------
+[debug] [2017-11-16T20:12:20.161Z] Command:       /usr/local/bin/node /Users/annethorsen/Desktop/GH/senior-phase/capstone/node_modules/.bin/firebase serve --only functions,hosting
+[debug] [2017-11-16T20:12:20.161Z] CLI Version:   3.15.1
+[debug] [2017-11-16T20:12:20.161Z] Platform:      darwin
+[debug] [2017-11-16T20:12:20.161Z] Node Version:  v8.8.0
+[debug] [2017-11-16T20:12:20.162Z] Time:          Thu Nov 16 2017 15:12:20 GMT-0500 (EST)
+[debug] [2017-11-16T20:12:20.162Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-16T20:12:20.175Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-16T20:12:20.176Z] > authorizing via signed-in user
+[debug] [2017-11-16T20:12:20.177Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-11-16T20:12:20.177Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/sfCHswRxwfdWMUTwNRV1QopSdCfFE79pniSuoT5p60Y',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Nov 16 2017 15:12:20 GMT-0500 (EST)
+[debug] [2017-11-16T20:12:20.363Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-16T20:12:20.371Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/capstone-98fe9  
+ Thu Nov 16 2017 15:12:20 GMT-0500 (EST)
+[debug] [2017-11-16T20:12:20.741Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-16T20:12:20.742Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/capstone-98fe9/tokens  
+ Thu Nov 16 2017 15:12:20 GMT-0500 (EST)
+[debug] [2017-11-16T20:12:21.158Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/annethorsen/Desktop/GH/senior-phase/capstone'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2017-11-16T20:12:21.625Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/capstone-98fe9  
+ Thu Nov 16 2017 15:12:21 GMT-0500 (EST)
+[debug] [2017-11-16T20:12:21.625Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/capstone-98fe9/apiKeys  
+ Thu Nov 16 2017 15:12:21 GMT-0500 (EST)
+[debug] [2017-11-16T20:12:21.626Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/capstone-98fe9  
+ Thu Nov 16 2017 15:12:21 GMT-0500 (EST)
+[debug] [2017-11-16T20:12:21.899Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-16T20:12:21.900Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/457370853523/clients/_:getWebAppConfig  
+ Thu Nov 16 2017 15:12:21 GMT-0500 (EST)
+[debug] [2017-11-16T20:12:21.940Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-16T20:12:21.980Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-16T20:12:22.219Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[warn] ⚠  functions: Failed to load functions source code. Ensure that you have the latest SDK by running npm i --save firebase-functions inside the functions directory.
+[warn] ⚠  functions: Error from emulator. FirebaseError: Error parsing triggers: Cannot find module 'firebase-functions'
+
+Try running "npm install" in your functions directory before deploying.

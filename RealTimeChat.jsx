@@ -55,19 +55,19 @@ class ChatApp extends Component {
     console.log('messages are: ', this.state.messages)
     return (
       this.state.showChat ?
-        (<form onSubmit={this.addMessage.bind(this)} style={{ zIndex: 2, position: 'fixed', top: '20vh', left: '70vw', backgroundColor: 'white', height: '80vh', width: '30vw'}}>
-        <div style={{overflowY: 'scroll', overflowWrap: 'break-word', height: '75vh'}}>
+        (<form className='chatForm' onSubmit={this.addMessage.bind(this)}>
+        <div className='chatMessage'>
           { /* Render the list of messages */
             this.state.messages.map(message => <Message key={message.id} message={message} />)
           }
         </div>
         <input type="text" ref={el => {this.inputEl = el}} />
         <input type="submit" />
-        <button onClick={this.handleClick} >Chat</button>
+        <button className='toggleChat fa fa-commenting-o' onClick={this.handleClick} >Chat</button>
       </form>)
       :
       (
-          <button onClick={this.handleClick} style={{ zIndex: 2, position: 'fixed', top: '95vh', left: '95vw' }}>Chat</button>
+          <button className='toggleChat fa fa-commenting-o' onClick={this.handleClick}></button>
       )
     );
   }
