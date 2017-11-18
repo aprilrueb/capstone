@@ -17,7 +17,12 @@ export default class Sidebar extends Component {
       ? (
         <div>
             <button onClick={() => { this.setState({ showMenu: false }) }}> X </button>
-            <button onClick={logout} > Log Out</button>
+            <button > Dashboard </button>
+            <button onClick={logout} > Log Out </button>
+            <div>
+              <h3>Trips</h3>
+              {/* loop over user's trips and display their names*/}
+            </div>
         </div>
       )
       : (
