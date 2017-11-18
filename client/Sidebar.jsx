@@ -5,7 +5,7 @@ import { db } from '../fire'
 export default class Sidebar extends Component {
   constructor(){
     super();
-    this.state = { showMenu: false}
+    this.state = { showMenu: false }
   }
 
   render() {
@@ -15,7 +15,7 @@ export default class Sidebar extends Component {
       <div>
       {showMenu
       ? (
-        <div>
+        <div style={{display: 'flex', flexDirection: 'column', width: '200px'}}>
             <button onClick={() => { this.setState({ showMenu: false }) }}> X </button>
             <button > Dashboard </button>
             <button onClick={logout} > Log Out </button>
