@@ -9,8 +9,9 @@ export const runBotFromMessageEvent = (always = false) => async event => {
   const trip = chat.parent
   // console.log('trip is......... in runBot', trip)
   // console.log('inside of runBotFromMessageEvent')
+
   if (!always) {
-    if ((await trip.get()).suppressBot) return
+    if ((await trip.get()).data().suppressBot) return
   }
 
   if (msg.text && msg.text.startsWith('/')) {
@@ -52,7 +53,11 @@ export async function botReceiveMessage(msg, chat, trip){
     trip.set({ location }, { merge: true })
     const topFive = await topPlaces({lat, lng})
     console.log(topFive)
-    rsp = `The top five places in ${location} are: * ${topFive[0].name} (${topFive[0].rating} stars)  * ${topFive[1].name} (${topFive[1].rating} stars)  * ${topFive[2].name} (${topFive[2].rating} stars)  * ${topFive[3].name} (${topFive[3].rating} stars) * ${topFive[4].name} (${topFive[4].rating} stars)`
+    return chat.add({
+      from: 'Google Places',
+      places: topFive,
+    })
+    // rsp = `The top five places in ${location} are: * ${topFive[0].name} (${topFive[0].rating} stars)  * ${topFive[1].name} (${topFive[1].rating} stars)  * ${topFive[2].name} (${topFive[2].rating} stars)  * ${topFive[3].name} (${topFive[3].rating} stars) * ${topFive[4].name} (${topFive[4].rating} stars)`
   }
 
   else if (cmd.startsWith('search for ')){

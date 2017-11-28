@@ -2,6 +2,9 @@ import React from 'react'
 
 export default (props) => {
   const splitText = props.data.text.split("*")
+  if (props.data.places) {
+    return <pre>{JSON.stringify(props.data.places, 0, 2)}</pre>
+  }
   return (
     props.data.from === 'Your buddy Bot' && splitText.length > 1?
       (
