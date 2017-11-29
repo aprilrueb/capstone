@@ -29,29 +29,32 @@ const db = admin.firestore()
 
 exports.joinTripFromInvite = functions.https.onRequest(
     require('express')()
-        .use('/api/join/:inviteId', (req, res, next) => {
-            console.log('tyring out this use thang',req.params);
-            req.inviteId = req.params.inviteId
-            next()
-        })
         .use(cookieParser)
         .use(validateUser)
-        .use((req, res) => {
+        .param('inviteId', (req, res, next) =>
+            db.collection('invites')
+                .doc(req.params.inviteId)
+                .get()
+                .then(invite => {
+                    req.invite = invite
+                    next()
+                })
+                .catch(next))
+        .use('/api/join/:inviteId', (req, res, next) => {
             const { uid } = req.user;
             console.log('uid -----> ', uid, ' <---- inviteId ----> ', req.inviteId)
-            db.collection('invites').doc(req.inviteId).get()
-                .then(function (doc) {
-                    if (doc.exists) {
-                        const {tripId} = doc.data();
-                        db.collection('trips').doc(tripId).update({[`users.${uid}`]: true})
-                            .then(() => doc._ref.delete() )
-                            .then(() => res.send({ user: req.user, tripId: tripId }))
-                    } else {
-                        console.error("No such document!");
-                    }
-                }).catch(function (error) {
-                    console.log("Error getting document:", error);
-                });
+            const {invite} = req
+
+            if (!invite.exists)
+                return res.status(404).send()
+
+            const {tripId} = invite.data();
+            db.collection('trips')
+                .doc(tripId)
+                .update({[`users.${uid}`]: true})
+                .then(() => invite.ref.delete() )
+                .then(() => res.send({ user: req.user, tripId: tripId }))
+                .catch(next)
             // go to invites -> use inviteId to get the tripId
             // add user to the trip using tripId
             // delete that invite thing
