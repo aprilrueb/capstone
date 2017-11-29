@@ -213,16 +213,45 @@ body {
 }
 
 .user-photo {
-    height: 200px;
-    width: 200px;
+    height: 400px;
+    width: 400px;
 }
 
-.user-dashboard {
+.user-dashboard-whole-page {
     position: absolute;
+    top: 0;
+    left: 0;
+    height: auto;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: rgb(230, 230, 230);
 }
 
-.user-dashboard content {
-    position: relative;
+.user-content {
+    display: flex;
+    flex: row wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.user-text {
+    padding-left: 30px;
+}
+
+.user-trips {
+    display: block;
+}
+
+@media screen and (max-width: 767px) {
+    .user-content {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .user-text {
+        padding-left: 0px;
+    }
 }
 
 .login-btn {
