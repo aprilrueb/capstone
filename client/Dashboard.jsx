@@ -25,21 +25,19 @@ export default class Dashboard extends Component {
 }
 
   render(){
-
+    console.log('**************************: ', this.props)
     var trips = this.state.trips;
     return (
       <div className="user-dashboard" align="center">
-        <h1>User Dashboard</h1>
+        <h2>{this.props.user.displayName}</h2>
         <div className="user-dashboard content">
-          <img className="user-photo" src={this.props.user.photoURL} />
-          <h5><strong>Name:</strong> {this.props.user.displayName}</h5>
-          <h5><strong>Email:</strong> {this.props.user.email}</h5>
-          <h5><ul><strong>My Trips:</strong> </ul></h5>
+        <img className="user-photo" src={this.props.user.photoURL} />
+        <h5><ul><strong>My Trips</strong> </ul></h5>
           {
             trips.map((trip, idx) => {
                 return (
                     <h5 key={idx} className="trip-item menu-item">
-                        <li><Link to={`/${Object.values(trip)[0]}`}>{Object.keys(trip)[0]}</Link></li>
+                        <p><Link to={`/${Object.values(trip)[0]}`}>{Object.keys(trip)[0]}</Link></p>
                     </h5>
                 );
             })

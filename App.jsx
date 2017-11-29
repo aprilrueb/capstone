@@ -19,9 +19,7 @@ export default class App extends Component{
 
   componentDidMount() {
     auth.onAuthStateChanged(user => {
-      if (user) {
         this.setState({ user })
-      }
     })
   }
 
@@ -40,9 +38,6 @@ export default class App extends Component{
 
   logout() {
     auth.signOut()
-      .then(() => {
-        this.setState({user: null})
-      })
   }
 
   render(){
@@ -50,25 +45,25 @@ export default class App extends Component{
     const isLoggedIn = this.state.user;
     return (
       <Router>
+        <div>
+        <Route exact path="/join/:inviteId" render={
+          ({ match: { params: { inviteId } } }) => <JoinTrip inviteId={inviteId} login={this.login} />
+        } />
+
         {isLoggedIn ?
           (<div>
             <Sidebar logout={ this.logout } userId={this.state.user.uid} />
             <Switch>
             <Route exact path="/" render={(props) => <Dashboard user={this.state.user} {...props} />} /> {/* their acct dashboard */}
             <Route path="/:tripId" render={(props) => <Trip user={this.state.user} {...props} />} /> {/* an individual trip  */}
-            <Route exact path="/join/:inviteId" render={
-              ({match: {params: {inviteId} }}) => <JoinTrip inviteId={inviteId} />
-            } />
           </Switch>
           </div>
         )
         : (<Switch>
             <Route exact path="/" render={() => <HomePage login={this.login} />} /> {/* HomePage incl. login */}
-            <Route exact path="/join/:inviteId" render={
-              ({ match: { params: { inviteId } } }) => <JoinTrip inviteId={inviteId} login={this.login} />
-            } />
           </Switch>)
         }
+        </div>
       </Router>
     );
   }
