@@ -50,7 +50,7 @@ export default class Event extends Component {
 
 function count(likes) {
     if (!likes) return 0
-    return Object.keys(likes).reduce((num, uid) => num + likes[uid] ? 1 : 0, 0)
+    return Object.keys(likes).reduce((num, uid) => (num + (likes[uid] ? 1 : 0)), 0)
 }
 
 // <p>date {props.data.time.toDateString && props.data.time.toDateString()}</p>
