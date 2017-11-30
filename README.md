@@ -1,43 +1,21 @@
-Can't start a fire without a spark.
+# tripHub
 
-# Get started:
+## [URL NAME](DEPLOYED URL)
+tripHub is a web app that simplifies collaborative trip planning. Use the app's real-time chat to brainstorm with friends, ask the chatbot for travel recommendations from Google Places, add ideas to a Pinned Events board, and decide what events to add to the final itinerary by seeing which events received the most likes.
 
-```
-git clone git@github.com:queerviolet/spark.git
-cd spark
-npm install
-npx firebase init
-npm start
-```
+## Composition
+tripHub uses:
+* React
+* Cloud Firestore
+* Firebase Cloud Functions
+* Firebase Authentication
+* Google Places API
+* Flexbox
+* ES6
 
-# Frontend
-
-The frontend starts in [`main.js`](./main.js). The root of the react app
-is in [`App.jsx`](./App.jsx).
-
-# Functions
-
-Write your [Cloud Functions](https://firebase.google.com/docs/functions/) in
-[`functions/index.js`](./functions/index.js).
-
-You can require node modules from Cloud Functions normally. Be sure to `npm install` them
-*inside* the functions directory (it has its own `package.json`).
-
-Sadly, you can't use `import` statements, and you can't `require` code that does.
-Don't despair, the library provides a workaround.
-
-## The Library
-
-The library is defined in [`lib/index.js`](lib/index.js). In the library, you
-can `import` code from your project normally, and anything you `export` will be
-available to your Cloud Functions.
-
-It is a bridge between Cloud Function code and the rest of your
-project's code.
-
-# Hot loading
-
-Hot module replacement is enabled, and the react-hot-loader plugins are applied.
-
-Your React components will update in place after you save them, without losing
-their state.
+## Creators
+Built as a capstone project for the [Grace Hopper Program](https://www.gracehopper.com/) by:
+* [Annelise Thorsen](https://github.com/thorsenaa)
+* [April Rueb](https://github.com/aprilrueb)
+* [Caryn McCarthy](https://github.com/cmccarthy15)
+* [Ella Pitassi] (https://github.com/ellapitassi)
