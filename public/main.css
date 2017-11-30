@@ -267,6 +267,11 @@ body {
     .user-text {
         padding-left: 0px;
     }
+
+    .user-photo {
+        max-width: 300px;
+        max-height: 300px;
+    }
 }
 
 .login-btn {
