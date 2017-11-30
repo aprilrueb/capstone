@@ -29,15 +29,44 @@ export default class HomePage extends Component {
 
   render(){
     return (
-
-      <div>
-        <section id="carousel">
-          <div id="carousel-text">
-            <h1 className="hp-header"><strong>tripHub</strong></h1>
-            <button className="btn login-btn black" onClick={this.props.login}>Log In</button>
+      <div className="whole-homepage">
+        <div className="carousel-container">
+            <div id="carousel-text">
+              <h1 className="hp-header"><strong>tripHub</strong></h1>
+              <button className="btn login-btn black" onClick={this.props.login}>Log In</button>
+            </div>
+            <img className="carousel-image" src={this.state.image} />
+        </div>
+        <div className="triphub-intro">
+          <h3><i>Welcome to tripHub</i></h3>
+          <p>tripHub is a web app that facilitates collaborative trip planning. The real-time chat is equipped with a chatbot to set the trip's location and provide suggestions for local events via Google Places. The bot can search for activities, hotels, restaurants, pin to the workspace, 'like' events, and eventually move the agreed upon event to the finalized itinerary.</p>
+        </div>
+        <div className="homepage-features">
+          <div className="feature-desc">
+            <h4>Chat</h4>
+            <p>Take advantage of the real-time chat to plan with your friends and Buddy Bot, who can help by searching for places and things to do, pinning ideas, and adding events to your itinerary.</p>
+            <img src="chat.png" />
           </div>
-          <img className="carousel-image" src={this.state.image} />
-        </section>
+          <div className="feature-desc">
+            <h4>Pins</h4>
+            <p>Use the pin board to keep everyone in the trip up to speed on potential ideas. The 'liking' functionality allows you to see which options are most popular with ease.</p>
+            <img src="pinboard.png" />
+          </div>
+          <div className="feature-desc">
+            <h4>Itinerary</h4>
+            <p>Everyone in a group can add to the itinerary using a simple form. Feeling lazy? Tell Buddy Bot what you want to do and see the plans being built in real-time.</p>
+            <img src="itinerary.png" />
+          </div>
+        </div>
+        <footer className="homepage-footer">
+          <div className="footer-names">
+              <p>Annelise Thorsen</p>
+              <p>April Rueb</p>
+              <p>Caryn McCarthy</p>
+              <p>Ella Pitassi</p>
+          </div>
+          <a href="https://github.com/aprilrueb/triphub">Github</a>
+        </footer>
       </div>
     );
   }
