@@ -4,6 +4,8 @@ import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 
 const moment = extendMoment(Moment);
+
+
 function tripDates(startDate, endDate){
   let range = moment.range(startDate, endDate);
   range = Array.from(range.by('day')).map(day => {
@@ -56,13 +58,12 @@ export default class Itinerary extends React.Component {
 
 
   handleAddButton(evt, name, time){
-    //evt.preventDefault();
     const trip = this.props.room.parent
     this.setState({showAdd: !this.state.showAdd});
     this.props.room.add({ name, time, itineraryStatus: true });
-    if (!this.props.startDate || time < this.props.startDate) {
+    if ((!(this.props.startDate instanceof Date)) || time < this.props.startDate) {
       trip.set({ startDate: time }, { merge: true }) }
-    if (!this.props.endDate || time > this.props.endDate) {
+    if ((!(this.props.endDate instanceof Date)) || time > this.props.endDate) {
       trip.set({ endDate: time }, { merge: true }) }
   }
 
