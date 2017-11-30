@@ -179,8 +179,8 @@ h3, h1 {
 #sidebarButton{
     position: fixed;
     z-index: 3;
-    top: 30px;
-    left: 80px;
+    top: 5px;
+    left: 5px;
     font-family: 'Bree Serif';
 
 }
