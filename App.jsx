@@ -27,7 +27,7 @@ export default class App extends Component{
     auth.signInWithPopup(provider)
       .then((result) => {
         const user = result.user
-        this.setState({ user }) // things we want off this... email, displayName, photoURL, uid
+        this.setState({ user })
         db.collection('users').doc(user.uid).set({
           displayName: user.displayName,
           email: user.email,

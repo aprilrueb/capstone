@@ -19,7 +19,7 @@ export const runBotFromMessageEvent = (always = false) => async event => {
 
 export async function botReceiveMessage(msg, chat, trip){
   console.log('bot received: FROM BOT', msg);
-  let cmd = msg.toLowerCase();
+  let cmd = msg.toLowerCase().trim();
   let rsp;
 
   console.log('cmd=', cmd)
@@ -161,7 +161,7 @@ export async function botReceiveMessage(msg, chat, trip){
   }
 
   else {
-    rsp = "🤖 Sorry I don't understand that command yet. Here are some example commands you can use:     📍 Set location to New York     🍽 Search for restaurants    📌 Pin Central Park    📌 Remove pin Central Park    📆 Add event Central Park @ 11/12/13 1:23 PM";
+    rsp = "🤖 Sorry I don't understand that command yet. Start all messages to me with /. Here are some example commands you can use:     📍 Set location to New York     🍽 Search for restaurants    📌 Pin Central Park    📌 Remove pin Central Park    📆 Add event Central Park @ 11/12/13 1:23 PM";
     return chat.add({
       time: new Date(),
       text: rsp,

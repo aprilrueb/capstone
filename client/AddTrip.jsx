@@ -5,7 +5,7 @@ import { SideNavItem, SideNav, Button, Icon } from 'react-materialize'
 
 
 export class AddTrip extends Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -23,8 +23,8 @@ export class AddTrip extends Component {
             users: {
                 [this.props.userid]: true
             },
-            // startDate: new Date(), //(new Date("January 1, 2017 01:15:00")),
-            // endDate: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+            startDate: {}, //(new Date("January 1, 2017 01:15:00")),
+            endDate: {},
             location: '',
             coords: {}
         })
@@ -34,7 +34,7 @@ export class AddTrip extends Component {
 
     handleChange(evt) {
         evt.preventDefault();
-        this.setState({ 
+        this.setState({
             name: evt.target.value,
         });
     }
@@ -51,7 +51,7 @@ export class AddTrip extends Component {
                 type="submit"
                 value="Create Trip"
                 />
-                
+
                 </SideNavItem>
                 </form>
 

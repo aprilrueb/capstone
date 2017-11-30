@@ -2,9 +2,6 @@ import React from 'react';
 import {Message, botReceiveMessage} from './index';
 import {db} from '../fire'
 
-//export default () => <Chat room={db.collection('test-chat')}/>
-//props: room
-
 export default class Chat extends React.Component {
     constructor(props){
         super(props);
@@ -12,13 +9,11 @@ export default class Chat extends React.Component {
             messages: [],
             showChat: false,
             newMessage: '',
-           // room: props.room
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.scrollToBottom = this.scrollToBottom.bind(this);
-        // this.addPin = this.addPin.bind(this);
     }
 
     componentDidMount() {
@@ -35,7 +30,6 @@ export default class Chat extends React.Component {
             .onSnapshot((snapshot) => {
                 this.setState({ messages: snapshot.docs });
             })
-
         this.el && this.scrollToBottom();
     }
 
@@ -70,11 +64,7 @@ export default class Chat extends React.Component {
          });
     }
 
-    // addPin(messageObj) {
-    //     this.props.events.add(messageObj)
-    // }
-
-    render() { //pins work but formatting off
+    render() {
         return (
             this.state.showChat
                 ? (

@@ -9,23 +9,6 @@ admin.initializeApp(functions.config().firebase)
 
 const db = admin.firestore()
 
-// const sendmail = require('sendmail')();
-
-
-// const sendInvite = (email, tripId) => {
-//     console.log('inside of sendInvite', email, tripId);
-//     return sendmail({
-//         from: 'joinatrip@triphub.notasite',
-//         to: email,
-//         subject: `You've been invited to join a trip!`,
-//         html: `Start a new trip with your friends using TripHub. \n \n Please sign up or login at triphub.herokuapp.com. Then go to triphub.herokuapp.com/${tripId}`,
-//     }, function (err, reply) {
-//         console.log('err and reply inside of sendInvite ---->', err, reply);
-//         console.log(err && err.stack);
-//         console.dir(reply);
-//     });
-// };
-
 
 exports.joinTripFromInvite = functions.https.onRequest(
     require('express')()
@@ -42,7 +25,6 @@ exports.joinTripFromInvite = functions.https.onRequest(
                 .catch(next))
         .use('/api/join/:inviteId', (req, res, next) => {
             const { uid } = req.user;
-            console.log('uid -----> ', uid, ' <---- inviteId ----> ', req.inviteId)
             const {invite} = req
 
             if (!invite.exists)
@@ -55,23 +37,13 @@ exports.joinTripFromInvite = functions.https.onRequest(
                 .then(() => invite.ref.delete() )
                 .then(() => res.send({ user: req.user, tripId: tripId }))
                 .catch(next)
-            // go to invites -> use inviteId to get the tripId
-            // add user to the trip using tripId
-            // delete that invite thing
-            // then send back tripId
-            // res.send({
-            // // DO THE FIRESTORE THINGS AND RES.SEND THE TRIP ID
-            // query: req.query,
-            // inviteId: req.inviteId,
-            // user: req.user,
-            // })
         }))
 
 exports.bot = functions.firestore
     .document('trips/{tripId}/chat/{messageId}')
-    .onCreate(lib.runBotFromMessageEvent()); //pass in tripId
+    .onCreate(lib.runBotFromMessageEvent());
 
-/*
+/* FOR LOCAL TESTING
 ➜  $ firebase experimental:functions:shell
 
 firebase > bot({from: 'annelise', text: '/search for HI'}, {params: {tripId: '5TT8NzzvNVZAvd8SbEyQ'}})
@@ -103,23 +75,3 @@ exports.sendInvite = functions.firestore
                 resolve(info)
             }));
     });
-
-
-
-
-
-    // .document('/users/{userId}')
-    // .onUpdate(event => {
-    //     console.log('***********got event and event.data and event.data.data()', event.data);
-
-    //     const {invitee, tripId} = event.data.data();
-    //     console.log('invitee is: ', invitee);
-
-    //     if (invitee === '') {
-    //         console.log('thinks invitee is blank: ');
-    //         return;
-    //     }
-    //     return sendInvite(invitee, tripId);
-    //     // return event.data.set({invitee: '', tripId: ''}, {merge: true});
-    // });
-
