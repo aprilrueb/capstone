@@ -65,7 +65,7 @@ export default class HomePage extends Component {
               <p>Caryn McCarthy</p>
               <p>Ella Pitassi</p>
           </div>
-          <a href="https://github.com/aprilrueb/triphub">Github</a>
+          <a href="https://github.com/aprilrueb/triphub">GitHub</a>
         </footer>
       </div>
     );
