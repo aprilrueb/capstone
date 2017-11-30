@@ -15,7 +15,7 @@
     "deploy": "npm run build-prod && npx firebase deploy"
   },
   "keywords": [],
-  "author": "Ashi Krishnan <hi@ashi.io>",
+  "author": "Annelise Thorsen, April Rueb, Caryn McCarthy, Ella Pitassi",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
