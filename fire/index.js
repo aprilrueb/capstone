@@ -1,25 +1,11 @@
 import config from './config'
 import firebase from 'firebase'
-//import firebaseui from 'firebaseui'
 import 'firebase/firestore'
 
-// export const uiConfig = {
-//   signInSuccessUrl: '/',
-//   signInOptions: [
-//     // Leave the lines as is for the providers you want to offer your users.
-//     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-//     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-//     firebase.auth.EmailAuthProvider.PROVIDER_ID,
-//   ],
-//   // Terms of service url.
-//   tosUrl: '/'
-// };
 
 
 
 firebase.initializeApp(config)
-
-// const map = new firebase.google.maps.Map();
 
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const auth = firebase.auth();

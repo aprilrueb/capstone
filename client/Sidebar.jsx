@@ -4,10 +4,6 @@ import { db } from '../fire';
 import { SideNavItem, SideNav, Button, Icon } from 'react-materialize'
 import { withRouter } from 'react-router'
 import AddTrip from './AddTrip'
-// import { SideNavItem, Nav, NavIcon, NavText } from 'react-sidenav';
-
-
-//export default class Sidebar extends Component {
 
 export class Sidebar extends Component {
 
@@ -37,7 +33,6 @@ export class Sidebar extends Component {
         <SideNav
             trigger={<Button id="sidebarButton"><i className="material-icons">menu</i></Button>}
             options={{ closeOnClick: true }} >
-                {/* used onClick instead of nested Link because browser console complains about nested a tags */}
                 <SideNavItem onClick={() => {this.props.history.push('/')}} >My Account</SideNavItem>
                 <SideNavItem onClick={() => { this.props.logout(); this.props.history.push('/') }}>Log Out</SideNavItem>
                 <SideNavItem divider />

@@ -7,6 +7,7 @@ export default class HomePage extends Component {
     this.state = {
       image: 'paris.jpg'
     };
+    this.carousel;
   }
 
   componentDidMount(){
@@ -14,13 +15,16 @@ export default class HomePage extends Component {
     const images = ['paris.jpg', 'iceland.jpg', 'hiking.jpg', 'nyc.jpg'];
     let counter = 0;
 
-    // can you set this to something to stop the interval on componentWillUnmount??
-    setInterval(() => {
+    this.carousel = setInterval(() => {
       counter = (counter + 1) % (images.length);
       theHP.setState({
         image: images[counter]
       });
     }, 5000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.carousel)
   }
 
   render(){

@@ -9,7 +9,7 @@ export default class Trip extends Component {
     constructor(props){
         super(props)
         this.state = {
-            tripId: props.match.params.tripId, //ADDED
+            tripId: props.match.params.tripId,
             isPartOfTrip: true,
             startDate: {},
             endDate: {},
@@ -20,55 +20,28 @@ export default class Trip extends Component {
         this.sendInvite = this.sendInvite.bind(this);
     }
 
-
-    // if we set the tripId on state as well and then render using that, we should be good.
-    // MIGHT STILL NEED A COMPONENTWILLRECEIVEPROPS / COMPONENTSHOULDUPDATE THO
-    // fetch (tripRef){
-    //     tripRef.get().then(doc => {
-    //         if (doc.exists && doc.data().users[this.props.user.uid]) {
-    //             const { startDate, endDate, name, users } = doc.data();
-    //             // console.log("USERSSSSS", users)
-    //             this.setState({ isPartOfTrip: true, startDate, endDate, name, numOfUsers: getTrue(users) });
-    //             console.log('got some new data incl dates: ', startDate, endDate)
-    //         } else {
-    //             console.log("No such document!");
-    //         }
-    //     }).catch(error => {
-    //         console.log("Error getting document: ", error);
-    //     })
-    // }
-
     componentDidMount(){
-        this.setState({ tripId: this.props.match.params.tripId}) //ADDED
+        this.setState({ tripId: this.props.match.params.tripId})
         this.unsubscribe = db.collection('trips').doc(this.props.match.params.tripId)
             .onSnapshot((doc) => {
                 this.setState({...doc.data(), numOfUsers: getTrue(doc.data().users), isPartOfTrip: true})
-                console.log('inside of snapshot thing in trip now......', doc.data())
             });
-
-        // this.fetch(db.collection('trips').doc(this.props.match.params.tripId))
     }
 
     componentWillReceiveProps(nextProps){
-        this.setState({ tripId: nextProps.match.params.tripId }) //ADDED
+        this.setState({ tripId: nextProps.match.params.tripId })
         if(this.props !== nextProps) this.props = nextProps;
         this.unsubscribe && this.unsubscribe();
         this.unsubscribe = db.collection('trips').doc(nextProps.match.params.tripId)
             .onSnapshot((doc) => {
                 this.setState({ ...doc.data(), numOfUsers: getTrue(doc.data().users), isPartOfTrip: true })
-                //console.log('inside of snapshot thing in trip now......', doc.data())
             });
-        // this.fetch(db.collection('trips').doc(nextProps.match.params.tripId))
     }
 
 
-    /* NOTES: it would be cool if it rendered "sent mail" for a second */
     sendInvite(evt){
         evt.preventDefault();
-        //target email is evt.target.toEmail.value
-        console.log('inside of sendInvite')
         const [email, tripId, tripName, displayName] = [evt.target.toEmail.value, this.props.match.params.tripId, this.state.name, this.props.user.displayName]
-        console.log('email and tripId', email, tripId, tripName, displayName);
         db.collection('invites')
             .add({
                 email,
@@ -76,14 +49,12 @@ export default class Trip extends Component {
                 tripId,
                 tripName
             })
-
-        /* reset the input field blank and hide invite form */
         evt.target.toEmail.value = '';
         this.setState({showInvite: false});
     }
 
     render(){
-        const tripRef = db.collection('trips').doc(this.state.tripId); //UPDATED
+        const tripRef = db.collection('trips').doc(this.state.tripId);
         let isPartOfTrip = this.state.isPartOfTrip;
         return (
             (isPartOfTrip ?

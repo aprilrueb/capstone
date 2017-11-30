@@ -33,18 +33,8 @@ export default class AddEvent extends Component{
     evt.preventDefault();
     const {month, day, year, hour, minute, ampm, name} = this.state;
     const time = new Date(month + ' ' + day + ' ' + year + ' ' + hour + ':' + minute + ' ' + ampm);
-    //const trip = this.props.room.parent
-
-    /*  ADD EVENT TO EVENTS COLLECTION  */
-    // this.props.room.add({name, time, itineraryStatus: true});
-
-    // /*  RESET START OR END DATE IF THE EVENT TIME IS OUTSIDE THE RANGE  */
-    // console.log("START DATE: ", this.props.startDate, "END DATE: ", this.props.endDate)
-    // if (!this.props.startDate || time < this.props.startDate){ trip.set({startDate: time}, {merge: true}) }
-    // if (!this.props.endDate || time > this.props.endDate){ trip.set({endDate: time}, {merge: true}) }
 
     this.props.closeForm(null, name, time);
-    /*  does not include default empty values for other fields of event */
   }
 
 
