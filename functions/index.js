@@ -66,7 +66,7 @@ exports.sendInvite = functions.firestore
             from: user, // sender address
             to: email, // list of receivers
             subject: 'You\'ve been invited to join a trip!', // Subject line
-            html: `<p>${displayName} invited you to join their trip: ${tripName}</p><p>Go to https://www.capstone-98fe9.firebaseapp.com/join/${inviteId} to start planning.</p><p>Have a great trip!</p>`// plain text body
+            html: `<p>${displayName} invited you to join their trip: ${tripName}</p><p>Go to https://www.triphub.tech/join/${inviteId} to start planning.</p><p>Have a great trip!</p>`// plain text body
         };
 
         return new Promise((resolve, reject) =>

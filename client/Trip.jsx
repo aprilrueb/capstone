@@ -65,7 +65,7 @@ export default class Trip extends Component {
                     {this.state.showInvite &&
                         <form className="center-form" onSubmit={this.sendInvite}>
                             <label className="label">
-                                <input type="text" name="toEmail" id="email-input" />
+                                <input type="text" name="toEmail" id="email-input" placeholder="Email"/>
                             </label>
                             <input className="btn center-self" type="submit" value="Submit" />
                         </form>
