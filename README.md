@@ -1,6 +1,6 @@
 # tripHub
 
-## [tripHub](https://capstone-98fe9.firebaseapp.com/)
+## [tripHub](https://www.triphub.tech/)
 tripHub is a web app that simplifies collaborative trip planning. Use the app's real-time chat to brainstorm with friends, ask the chatbot for travel recommendations from Google Places, add ideas to a Pinned Events board, and decide what events to add to the final itinerary by seeing which events received the most likes.
 
 ## Composition
