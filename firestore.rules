@@ -24,5 +24,8 @@ service cloud.firestore {
         allow read, write: if isSelf();
       }
     }
+    match /invites/{inviteId} {
+    	allow create, read, write, delete: if true;
+    }
   }
 }
