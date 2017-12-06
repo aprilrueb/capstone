@@ -17,18 +17,20 @@ export class AddTrip extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
-        const ref = db.collection('trips')
-        .add({
-            name: this.state.name,
-            users: {
-                [this.props.userid]: true
-            },
-            startDate: {}, //(new Date("January 1, 2017 01:15:00")),
-            endDate: {},
-            location: '',
-            coords: {}
-        })
-        .then(({id}) => this.props.history.push(`/${id}`))
+        if(this.state.name.trim() !== ''){
+            const ref = db.collection('trips')
+                .add({
+                    name: this.state.name,
+                    users: {
+                        [this.props.userid]: true
+                    },
+                    startDate: {}, //(new Date("January 1, 2017 01:15:00")),
+                    endDate: {},
+                    location: '',
+                    coords: {}
+                })
+                .then(({id}) => this.props.history.push(`/${id}`))}
+        else { alert('Please insert a trip name')}
         this.setState({ name: '' });
     }
 
