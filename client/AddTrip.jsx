@@ -18,7 +18,6 @@ export class AddTrip extends Component {
     handleSubmit(evt) {
         evt.preventDefault();
         if(this.state.name.trim() !== ''){
-            console.log('this.state.name is: ', this.state.name)
             const ref = db.collection('trips')
                 .add({
                     name: this.state.name,
